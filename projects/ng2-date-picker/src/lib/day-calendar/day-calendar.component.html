@@ -7,8 +7,8 @@
       [isLabelClickable]="componentConfig.enableMonthSelector"
       [label]="navLabel"
       [showGoToCurrent]="_shouldShowCurrent"
-      [showLeftNav]="showLeftNav"
-      [showRightNav]="showRightNav"
+      [leftNavDisabled]="!showLeftNav"
+      [rightNavDisabled]="!showRightNav"
       [theme]="theme">
   </dp-calendar-nav>
 

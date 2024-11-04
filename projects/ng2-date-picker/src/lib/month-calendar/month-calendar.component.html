@@ -9,9 +9,9 @@
       [isLabelClickable]="componentConfig.isNavHeaderBtnClickable"
       [label]="navLabel"
       [showGoToCurrent]="shouldShowCurrent()"
-      [showLeftNav]="showLeftNav"
+      [leftNavDisabled]="!showLeftNav"
       [showLeftSecondaryNav]="showSecondaryLeftNav"
-      [showRightNav]="showRightNav"
+      [rightNavDisabled]="!showRightNav"
       [showRightSecondaryNav]="showSecondaryRightNav"
       [theme]="theme">
   </dp-calendar-nav>
