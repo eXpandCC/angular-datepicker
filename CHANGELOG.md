@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+# [19.0.1] (2025-03-18)
+
+### Improvements
+
+- Go today button visibility, hidden to disabled. - by [@barriosagustin]
+
 # [19.0.0] (2025-01-31)
 
 ### Improvements
