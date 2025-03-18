@@ -93,6 +93,17 @@
       &:hover {
         background: @c-black;
       }
+
+      &:disabled {
+        opacity: 0.5;    
+        background: fade(@c-black, 30);
+        border-color: fade(@c-black, 30); 
+        pointer-events: none;   
+      }
+
+      &:disabled:hover {
+        background: fade(@c-black, 30);
+      }
     }
 
     &.dp-material {
