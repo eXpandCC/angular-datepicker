@@ -42,3 +42,6 @@ bin.tgz
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# npm
+.npmrc
