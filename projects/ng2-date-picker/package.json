@@ -1,6 +1,6 @@
 {
   "name": "ng2-date-picker",
-  "version": "19.0.1",
+  "version": "20.0.0",
   "author": "Vlad Ioffe",
   "license": "MIT",
   "repository": {
@@ -19,10 +19,10 @@
     "angular-datepicker"
   ],
   "peerDependencies": {
-    "@angular/common": "^19.1.4",
-    "@angular/core": "^19.1.4",
-    "@angular/cdk": "^19.1.2",
-    "dayjs": "^1.11.4"
+    "@angular/common": "20.3.2",
+    "@angular/core": "20.3.2",
+    "@angular/cdk": "20.2.5",
+    "dayjs": "1.11.7"
   },
   "dependencies": {
     "tslib": "^2.4.0"

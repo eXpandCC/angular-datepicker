@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+# [20.0.0] (2025-09-26)
+
+### Improvements
+
+- Update to Angular 20. - by [@themocs]
+
 # [19.0.1] (2025-03-18)
 
 ### Improvements
