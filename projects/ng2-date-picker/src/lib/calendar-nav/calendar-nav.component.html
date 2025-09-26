@@ -4,7 +4,7 @@
       [attr.data-hidden]="isLabelClickable"
       [hidden]="isLabelClickable"
       [innerText]="label"
-    >
+      >
     </span>
     <button
       (click)="labelClicked()"
@@ -18,13 +18,14 @@
 
   <div class="dp-nav-btns-container">
     <div class="dp-calendar-nav-container-left">
-      <button
-        (click)="leftSecondaryNavClicked()"
-        *ngIf="showLeftSecondaryNav"
-        [disabled]="leftSecondaryNavDisabled"
-        class="dp-calendar-secondary-nav-left"
-        type="button"
-      ></button>
+      @if (showLeftSecondaryNav) {
+        <button
+          (click)="leftSecondaryNavClicked()"
+          [disabled]="leftSecondaryNavDisabled"
+          class="dp-calendar-secondary-nav-left"
+          type="button"
+        ></button>
+      }
       <button
         (click)="leftNavClicked()"
         [attr.data-hidden]="!showLeftNav"
@@ -49,13 +50,14 @@
         class="dp-calendar-nav-right"
         type="button"
       ></button>
-      <button
-        (click)="rightSecondaryNavClicked()"
-        *ngIf="showRightSecondaryNav"
-        [disabled]="rightSecondaryNavDisabled"
-        class="dp-calendar-secondary-nav-right"
-        type="button"
-      ></button>
+      @if (showRightSecondaryNav) {
+        <button
+          (click)="rightSecondaryNavClicked()"
+          [disabled]="rightSecondaryNavDisabled"
+          class="dp-calendar-secondary-nav-right"
+          type="button"
+        ></button>
+      }
     </div>
   </div>
 </div>
