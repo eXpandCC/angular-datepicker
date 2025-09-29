@@ -89,7 +89,7 @@
   },
   "dependencies": {
     "@angular/cdk": "20.2.5",
-    "dayjs": "1.11.7",
+    "dayjs": "1.11.10",
     "tslib": "2.4.0"
   }
 }
