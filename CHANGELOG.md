@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+# [20.0.2] (2025-10-13)
+
+### Improvements
+
+- Performance upgrade, updated angular migration track @for. - by [@themocs]
+
 # [20.0.1] (2025-09-26)
 
 ### Improvements
