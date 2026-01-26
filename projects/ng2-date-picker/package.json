@@ -19,10 +19,10 @@
     "angular-datepicker"
   ],
   "peerDependencies": {
-    "@angular/common": "21.1.0",
-    "@angular/core": "21.1.0",
-    "@angular/cdk": "21.1.0",
-    "dayjs": "1.11.10"
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/cdk": "^21.0.0",
+    "dayjs": "^1.11.10"
   },
   "dependencies": {
     "tslib": "^2.4.0"
