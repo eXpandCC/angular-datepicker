@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+# [22.0.0] (2026-07-14)
+
+### Improvements
+
+- Update to Angular 22. - by [@barriosagustin]
+
+# [21.0.0] (2026-01-21)
+
+### Improvements
+
+- Update to Angular 21. - by [@themocs]
+
 # [20.0.2] (2025-10-13)
 
 ### Improvements
