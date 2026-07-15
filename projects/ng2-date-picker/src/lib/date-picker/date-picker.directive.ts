@@ -1,9 +1,8 @@
-import {CalendarMode} from '../common/types/calendar-mode';
-import {IDatePickerDirectiveConfig} from './date-picker-directive-config.model';
-import {IDpDayPickerApi} from './date-picker.api';
-import {DatePickerComponent} from './date-picker.component';
+import { CalendarMode } from "../common/types/calendar-mode";
+import { IDatePickerDirectiveConfig } from "./date-picker-directive-config.model";
+import { IDpDayPickerApi } from "./date-picker.api";
+import { DatePickerComponent } from "./date-picker.component";
 import {
-  ComponentFactoryResolver,
   Directive,
   ElementRef,
   EventEmitter,
@@ -12,23 +11,22 @@ import {
   OnInit,
   Optional,
   Output,
-  ViewContainerRef
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
-import {INavEvent} from '../common/models/navigation-event.model';
-import {UtilsService} from '../common/services/utils/utils.service'
-import {CalendarValue} from '../common/types/calendar-value';
-import {ISelectionEvent} from '../common/types/selection-event.model';
-import {SingleCalendarValue} from '../common/types/single-calendar-value';
-import {Dayjs} from 'dayjs';
+  ViewContainerRef,
+} from "@angular/core";
+import { NgControl } from "@angular/forms";
+import { INavEvent } from "../common/models/navigation-event.model";
+import { UtilsService } from "../common/services/utils/utils.service";
+import { CalendarValue } from "../common/types/calendar-value";
+import { ISelectionEvent } from "../common/types/selection-event.model";
+import { SingleCalendarValue } from "../common/types/single-calendar-value";
+import { Dayjs } from "dayjs";
 
 @Directive({
-    exportAs: 'dpDayPicker',
-    selector: '[dpDayPicker]',
-    standalone: false
+  exportAs: "dpDayPicker",
+  selector: "[dpDayPicker]",
+  standalone: false,
 })
 export class DatePickerDirective implements OnInit {
-
   @Output() open = new EventEmitter<void>();
   @Output() close = new EventEmitter<void>();
   @Output() onChange = new EventEmitter<CalendarValue>();
@@ -39,12 +37,12 @@ export class DatePickerDirective implements OnInit {
   datePicker: DatePickerComponent;
   api: IDpDayPickerApi;
 
-  constructor(public readonly viewContainerRef: ViewContainerRef,
-              public readonly elemRef: ElementRef,
-              public readonly componentFactoryResolver: ComponentFactoryResolver,
-              @Optional() public readonly formControl: NgControl,
-              public readonly utilsService: UtilsService) {
-  }
+  constructor(
+    public readonly viewContainerRef: ViewContainerRef,
+    public readonly elemRef: ElementRef,
+    @Optional() public readonly formControl: NgControl,
+    public readonly utilsService: UtilsService,
+  ) {}
 
   private _config: IDatePickerDirectiveConfig;
 
@@ -52,7 +50,7 @@ export class DatePickerDirective implements OnInit {
     return this._config;
   }
 
-  @Input('dpDayPicker') set config(config: IDatePickerDirectiveConfig) {
+  @Input("dpDayPicker") set config(config: IDatePickerDirectiveConfig) {
     this._config = {
       ...config,
       hideInputContainer: true,
@@ -77,7 +75,7 @@ export class DatePickerDirective implements OnInit {
     this.markForCheck();
   }
 
-  private _mode: CalendarMode = 'day';
+  private _mode: CalendarMode = "day";
 
   get mode(): CalendarMode {
     return this._mode;
@@ -178,8 +176,7 @@ export class DatePickerDirective implements OnInit {
   }
 
   createDatePicker(): DatePickerComponent {
-    const factory = this.componentFactoryResolver.resolveComponentFactory(DatePickerComponent);
-    return this.viewContainerRef.createComponent(factory).instance;
+    return this.viewContainerRef.createComponent(DatePickerComponent).instance;
   }
 
   attachModelToDatePicker() {
@@ -191,7 +188,10 @@ export class DatePickerDirective implements OnInit {
 
     this.formControl.valueChanges.subscribe((value) => {
       if (value !== this.datePicker.inputElementValue) {
-        const strVal = this.utilsService.convertToString(value, this.datePicker.componentConfig.format);
+        const strVal = this.utilsService.convertToString(
+          value,
+          this.datePicker.componentConfig.format,
+        );
         this.datePicker.onViewDateChange(strVal);
       }
     });
@@ -200,7 +200,8 @@ export class DatePickerDirective implements OnInit {
 
     this.datePicker.registerOnChange((value, changedByInput) => {
       if (value) {
-        const isMultiselectEmpty = setup && Array.isArray(value) && !value.length;
+        const isMultiselectEmpty =
+          setup && Array.isArray(value) && !value.length;
 
         if (!isMultiselectEmpty && !changedByInput) {
           this.formControl.control.setValue(this.datePicker.inputElementValue);
@@ -211,15 +212,15 @@ export class DatePickerDirective implements OnInit {
 
       if (!setup) {
         this.formControl.control.markAsDirty({
-          onlySelf: true
+          onlySelf: true,
         });
       } else {
         setup = false;
       }
 
       if (errors) {
-        if (errors.hasOwnProperty('format')) {
-          const {given} = errors['format'];
+        if (errors.hasOwnProperty("format")) {
+          const { given } = errors["format"];
           this.datePicker.inputElementValue = given;
           if (!changedByInput) {
             this.formControl.control.setValue(given);
@@ -231,17 +232,17 @@ export class DatePickerDirective implements OnInit {
     });
   }
 
-  @HostListener('click')
+  @HostListener("click")
   onClick() {
     this.datePicker.onClick();
   }
 
-  @HostListener('focus')
+  @HostListener("focus")
   onFocus() {
     this.datePicker.inputFocused();
   }
 
-  @HostListener('keydown.enter')
+  @HostListener("keydown.enter")
   onEnter() {
     if (this.datePicker.componentConfig.closeOnEnter) {
       this.datePicker.hideCalendar();
@@ -260,7 +261,7 @@ export class DatePickerDirective implements OnInit {
       this.datePicker.maxDate = this.maxDate;
       this.datePicker.minTime = this.minTime;
       this.datePicker.maxTime = this.maxTime;
-      this.datePicker.mode = this.mode || 'day';
+      this.datePicker.mode = this.mode || "day";
       this.datePicker.displayDate = this.displayDate;
       this.datePicker.config = this.config;
       this.datePicker.open = this.open;
@@ -274,9 +275,9 @@ export class DatePickerDirective implements OnInit {
       this.datePicker.init();
 
       if (this.datePicker.componentConfig.disableKeypress) {
-        this.elemRef.nativeElement.setAttribute('readonly', true);
+        this.elemRef.nativeElement.setAttribute("readonly", true);
       } else {
-        this.elemRef.nativeElement.removeAttribute('readonly');
+        this.elemRef.nativeElement.removeAttribute("readonly");
       }
     }
   }
